@@ -3,22 +3,22 @@ syntax = "proto3";
 package net.devh.boot.grpc.example;
 
 option java_multiple_files = true;
-option java_package = "com.guanweiming.grpc.hello";
-option java_outer_classname = "HelloProto";
+option java_package = "com.guanweiming.grpc.sms";
+option java_outer_classname = "SmsProto";
 
 // The greeting service definition.
 service MyService {
   // Sends a greeting
-  rpc sayHello (HelloRequest) returns (HelloReply) {
+  rpc SendCode (SendCodeRequest) returns (SendCOdeReply) {
   }
 }
 
 // The request message containing the user's name.
-message HelloRequest {
+message SendCodeRequest {
   string name = 1;
 }
 
 // The response message containing the greetings
-message HelloReply {
+message SendCOdeReply {
   string message = 1;
 }

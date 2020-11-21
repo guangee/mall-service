@@ -2,4 +2,4 @@
 git add .
 git commit -m "INIT"
 git push origin master
-git push origin --tags
+# git push origin --tags
