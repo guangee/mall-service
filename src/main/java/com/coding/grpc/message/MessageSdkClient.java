@@ -1,16 +1,15 @@
 package com.coding.grpc.message;
 
-import lombok.extern.slf4j.Slf4j;
-import net.devh.boot.grpc.client.inject.GrpcClient;
+import lombok.AllArgsConstructor;
+import lombok.Data;
 import org.springframework.stereotype.Service;
 
-@Slf4j
+@Data
+@AllArgsConstructor
 @Service
 public class MessageSdkClient {
-    @GrpcClient("message")
-    private MessageServiceGrpc.MessageServiceBlockingStub blockingStub;
+    private final MessageServiceGrpc.MessageServiceBlockingStub blockingStub;
+    private final MessageServiceGrpc.MessageServiceFutureStub futureStub;
+    private final MessageServiceGrpc.MessageServiceStub stub;
 
-    public SendSmsReply demo(String phone) {
-        return blockingStub.sendSmsCode(SendSmsRequest.newBuilder().setPhone(phone).build());
-    }
 }

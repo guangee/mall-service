@@ -6,18 +6,15 @@ option java_multiple_files = true;
 option java_package = "com.coding.grpc.message";
 option java_outer_classname = "MessageProto";
 
-// The greeting service definition.
 service MessageService {
   // 发送短信验证码
   rpc SendSmsCode (SendSmsRequest) returns (SendSmsReply) {}
 }
 
-// The request message containing the user's name.
 message SendSmsRequest {
   string phone = 1;
 }
 
-// The response message containing the greetings
 message SendSmsReply {
   bool result = 1;
   string message = 2;

@@ -1,0 +1,54 @@
+syntax = "proto3";
+
+package com.coding.grpc.message;
+
+option java_multiple_files = true;
+option java_package = "com.coding.grpc.weather";
+option java_outer_classname = "WeatherProto";
+
+service WeatherService {
+  // 获取天气情况
+  rpc GetWeather (GetWeatherRequest) returns (GetWeatherReply) {}
+}
+
+message GetWeatherRequest {
+  /*城市名*/
+  string city = 1;
+  /*经度*/
+  string longitude = 2;
+  /*纬度*/
+  string latitude = 3;
+}
+message GetWeatherReply {
+  /*city : 北京*/
+  string city = 1;
+  /*citycode : 101010100*/
+  string citycode = 2;
+  /*weather : 多云*/
+  WeatherMeta weather = 3;
+  repeated Daily daily = 4;
+  repeated HourLy hourly = 5;
+}
+message Daily{
+  string date = 1;
+  string week = 2;
+  string sunrise = 3;
+  string sunset = 4;
+  WeatherMeta day = 5;
+  WeatherMeta night = 6;
+}
+message HourLy{
+  string time = 1;
+  string weather = 2;
+  string temp = 3;
+}
+message WeatherMeta{
+  /*天气*/
+  string weather = 1;
+  /*温度*/
+  string temp = 2;
+  /*风向*/
+  string windDirect = 3;
+  /*风力*/
+  string windPower = 4;
+}
