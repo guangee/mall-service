@@ -7,18 +7,20 @@ option java_package = "com.guanweiming.grpc.sms";
 option java_outer_classname = "SmsProto";
 
 // The greeting service definition.
-service MyService {
+service SmsService {
   // Sends a greeting
-  rpc SendCode (SendCodeRequest) returns (SendCOdeReply) {
+  rpc SendCode (SendCodeRequest) returns (SendCodeReply) {
   }
 }
 
 // The request message containing the user's name.
 message SendCodeRequest {
-  string name = 1;
+  string phone = 1;//手机号
 }
 
 // The response message containing the greetings
-message SendCOdeReply {
-  string message = 1;
+message SendCodeReply {
+  int32 code = 1;//返回码
+  string msg = 2;//备注
+  string data = 3;//返回值
 }
